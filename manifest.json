@@ -1,0 +1,26 @@
+{
+    "name": "Simple PWA",
+    "short_name": "Simple PWA",
+    "icons": [
+        {
+            "src": "images/logo92.png",
+            "sizes": "92x92",
+            "type": "image/png"
+        },
+        {
+            "src": "images/logo144.png",
+            "sizes": "144x144",
+            "type": "image/png"
+        },
+        {
+            "src": "images/logo152.png",
+            "sizes": "152x152",
+            "type": "image/png"
+        }
+    ],
+    "start_url": "/",
+    "display": "standalone",
+    "orientation": "portrait",
+    "background_color": "#f0f2f5",
+    "theme_color": "#96f2d7"
+}

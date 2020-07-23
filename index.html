@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple PWA</title>
+    <!-- Connect to manifest.json-->
+    <link rel="manifest" href="manifest.json">
+</head>
+
+<body>
+    <div id="content">
+        <h1>A very minimal PWA</h1>
+        <ol>
+            <li>Create manifest.json. You can use <a href="https://app-manifest.firebaseapp.com/">this online
+                    generator</a>.</li>
+            <li>Add to the root folder an "images" folder, containing a simple logo in 92x92, 144x144 and 152x152
+                resolution.</li>
+            <li>Add this text as a sample:
+                <code>
+<pre>
+{
+    "name": "Simple PWA",
+    "short_name": "Simple PWA",
+    "icons": [
+        {
+            "src": "images/logo92.png",
+            "sizes": "92x92",
+            "type": "image/png"
+        },
+        {
+            "src": "images/logo144.png",
+            "sizes": "144x144",
+            "type": "image/png"
+        },
+        {
+            "src": "images/logo152.png",
+            "sizes": "152x152",
+            "type": "image/png"
+        }
+    ],
+    "start_url": "/",
+    "display": "standalone",
+    "orientation": "portrait",
+    "background_color": "#f0f2f5",
+    "theme_color": "#96f2d7"
+}
+</pre>
+                </code>
+            </li>
+            <li>Connect your index.html to manifest.json adding this line to the head of document:
+                <code><pre>&lt;link rel="manifest" href="manifest.json"></pre></code>
+            </li>
+            <li>Create an empty sw.js file: this will be your service worker.</li>
+            <li>Add this sample text to sw.js:
+                <code>
+<pre>
+    /** An empty service worker! */
+self.addEventListener('fetch', function (event) {
+});
+
+self.addEventListener('install', function (event) {
+event.waitUntil(
+caches.open(cacheName).then(function (cache) {
+return cache.addAll(
+[
+'/images/logo92.png',
+'/images/logo144.png',
+'/images/logo152.png',
+'/offline.html'
+]
+);
+})
+);
+});
+</pre>
+                </code>
+            </li>
+            <li>NB. You can add whatever file you want to the service worker cache.</li>
+            <li>Create a offline copy of your index.html and name it offline.html. This is an important step!</li>
+            <li>Connect your html file to the service worker with:</li>
+            <code>
+<pre>
+    <script>
+        navigator.serviceWorker &&
+            navigator.serviceWorker.register('SW.js').then(function (registration) {
+            });
+    </script>
+</pre>
+</code>
+            <li>Now, if you open your website on a smartphone, your device will ask you to add your website as a PWA.
+            </li>
+            <li>NB. A PWA works only if your website is served via HTTPS.</li>
+        </ol>
+    </div>
+    <script>
+        navigator.serviceWorker &&
+            navigator.serviceWorker.register('SW.js').then(function (registration) {
+            });
+    </script>
+</body>
+
+</html>

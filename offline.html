@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple PWA</title>
+    <!-- Connect to manifest.json-->
+    <link rel="manifest" href="manifest.json">
+</head>
+
+<body>
+    <div id="content">
+        <h1>A very minimal PWA</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum, cupiditate reprehenderit? Aut, fuga quia
+            repellendus omnis dicta laudantium iusto molestias unde laborum qui, recusandae error ullam voluptate vero,
+            repellat illum.</p>
+    </div>
+    <script>
+        navigator.serviceWorker &&
+            navigator.serviceWorker.register('SW.js').then(function (registration) {
+            });
+    </script>
+</body>
+
+</html>
